@@ -1,4 +1,3 @@
-//course name, course number
 using System.Collections.Generic;
 
 namespace Registrar.Models
