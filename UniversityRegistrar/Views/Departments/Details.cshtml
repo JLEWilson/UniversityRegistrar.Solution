@@ -1,0 +1,41 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Registrar.Models.Department;
+
+<h2>Department Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+@if(@Model.JoinEntities1.Count == 0)
+{
+  <p>No students in the department</p>
+}
+else
+{
+  <h4>Students enrolled in this department</h4>
+  <ul>
+  @foreach(var departmentStudent in @Model.JoinEntities1)
+  {
+    <li>@departmentStudent.Student.Name : @departmentStudent.StudentId</li>
+  }
+  </ul>
+}
+@if(@Model.JoinEntities2.Count == 0)
+{
+  <p>No courses in the department</p>
+}
+else
+{
+  <h4>Students enrolled in this department</h4>
+  <ul>
+  @foreach(var join in @Model.JoinEntities2)
+  {
+    <li>@join.Course.Name</li>
+  }
+  </ul>
+}
+
+<p>@Html.ActionLink("Back to list of departments", "Index")</p>
+<p>@Html.ActionLink("Edit this department", "Edit", new { id = Model.DepartmentId })</p>
+<p>@Html.ActionLink("Delete this department", "Delete", new { id = Model.DepartmentId })</p>
